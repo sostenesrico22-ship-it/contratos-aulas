@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contratos de Aulas de Música · Sóstenes Silva · Sustenido Music</title>
+<meta name="description" content="Contratos de prestação de serviços de aulas de música com assinatura digital – Sóstenes Silva, Ilhéus-BA.">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head><body>
+<header class="hero">
+  <div class="brand">♯ Sustenido Music</div>
+  <img src="img/sostenes.jpg" alt="Sóstenes Silva ao piano" class="foto">
+  <h1>Sóstenes Silva</h1>
+  <p class="sub">Professor de música · Produtor musical · Compositor · Cantor</p>
+</header>
+<main>
+<section id="sobre" class="card">
+  <h2>Sobre mim</h2>
+  <p>Tenho 37 anos, sou casado, cristão e moro em Ilhéus-BA, no bairro Nelson Costa. Estou no mundo da música há cerca de 20 anos e dou aulas há 18.</p>
+  <p>Sou músico profissional, produtor musical, compositor e cantor. Também lidero grupos musicais e formo corais e grupos vocais. No ensino de teclado, trabalho com o método <strong>Sustenido Music</strong>.</p>
+  <ul class="tags"><li>Teclado / Piano</li><li>Saxofone</li><li>Aulas em turma</li><li>Coral e grupos vocais</li></ul>
+  <p class="como"><strong>Como contratar:</strong> escolha a aba do serviço, preencha seus dados, leia o contrato, marque “Li e concordo” e assine com o dedo ou o mouse. O contrato assinado em PDF vai pro meu WhatsApp.</p>
+</section>
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-svc="teclado">🎹 Teclado / Piano</button>
+  <button class="tab" data-svc="sax">🎷 Saxofone</button>
+  <button class="tab" data-svc="turma">👥 Aulas em Turma</button>
+</nav>
+<section id="etapa-contrato" class="card">
+  <h2 id="svc-title"></h2>
+  <form id="dados" autocomplete="on">
+    <h3>1. Seus dados (Contratante)</h3>
+    <div class="grid">
+      <label>Nome completo*<input name="nome" required></label>
+      <label>CPF*<input name="cpf" required inputmode="numeric" placeholder="000.000.000-00"></label>
+      <label>RG (opcional)<input name="rg"></label>
+      <label>Telefone / WhatsApp*<input name="tel" required inputmode="tel"></label>
+      <label>E-mail<input name="email" type="email"></label>
+      <label class="full">Endereço completo*<input name="end" required></label>
+      <label class="full chk"><input type="checkbox" name="menor" id="menor"> O(a) aluno(a) é menor de idade</label>
+      <label class="resp">Nome do(a) aluno(a) menor<input name="aluno"></label>
+      <label class="resp">Nome do responsável legal<input name="respNome"></label>
+      <label class="resp">CPF do responsável legal<input name="respCpf" inputmode="numeric"></label>
+    </div>
+    <h3>2. Detalhes das aulas</h3>
+    <div class="grid">
+      <label>Dias e horários*<input name="dias" required placeholder="Ex.: terças e quintas, 15h"></label>
+      <label>Duração de cada aula*<select name="duracao" required><option value="">Escolha</option><option>30 minutos</option><option>45 minutos</option><option>60 minutos</option><option>90 minutos</option></select></label>
+      <label>Local*<select name="local" required><option value="">Escolha</option><option>de forma presencial, no local do Contratado</option><option>de forma online, por videochamada</option><option>a domicílio, no endereço do Contratante</option></select></label>
+      <label>Valor mensal (R$)*<input name="valor" required inputmode="decimal" placeholder="Ex.: 150,00"></label>
+      <label>Dia de vencimento*<input name="venc" required type="number" min="1" max="31" placeholder="Ex.: 10"></label>
+      <label>Forma de pagamento<input name="pag" value="Pix"></label>
+      <label class="full chk"><input type="checkbox" name="imagem"> Autorizo o uso da minha imagem / do(a) aluno(a) em fotos e vídeos de aulas e apresentações (opcional)</label>
+    </div>
+  </form>
+  <h3>3. Leia o contrato</h3>
+  <article id="contrato" class="contrato"></article>
+  <label class="aceite"><input type="checkbox" id="aceite"> <span>Li e concordo com os termos deste contrato</span></label>
+  <p id="faltando" class="aviso"></p>
+  <button id="btn-continuar" class="btn" disabled>Continuar para assinatura ✍️</button>
+</section>
+<section id="etapa-assinatura" class="card hidden">
+  <h2>Assinatura digital</h2>
+  <p id="resumo"></p>
+  <p>Assine no quadro abaixo com o dedo (celular) ou com o mouse:</p>
+  <canvas id="pad"></canvas>
+  <div class="row"><button id="btn-limpar" class="btn ghost">Limpar</button><button id="btn-voltar" class="btn ghost">← Voltar ao contrato</button></div>
+  <p class="data">Data e hora: <strong id="agora"></strong></p>
+  <button id="btn-assinar" class="btn">Assinar e enviar ✅</button>
+  <div id="final" class="hidden final">
+    <h3>Contrato assinado! 🎉</h3>
+    <p>O PDF do contrato foi gerado e baixado no seu aparelho. Agora envie para o Sóstenes no WhatsApp <strong>anexando o arquivo PDF baixado</strong> (clique no 📎 clipe → Documento).</p>
+    <button id="btn-share" class="btn hidden">Compartilhar PDF no WhatsApp</button>
+    <a id="lnk-pdf" class="btn ghost" download>Baixar o PDF de novo</a>
+    <a id="lnk-wa" class="btn wa" target="_blank" rel="noopener">Abrir WhatsApp do Sóstenes</a>
+  </div>
+</section>
+</main>
+<footer>
+  <p>Sóstenes Silva · Sustenido Music · Ilhéus-BA · WhatsApp (73) 98203-5208</p>
+  <p class="disc">Este é um modelo de contrato elaborado com base no Código Civil (arts. 593 a 609), no Código de Defesa do Consumidor (Lei 8.078/90), na Lei 14.063/2020, na MP 2.200-2/2001 e na LGPD (Lei 13.709/18). Pode ser revisado por um advogado. A assinatura eletrônica aqui é simples, válida entre as partes que a aceitam.</p>
+</footer>
+<script src="app.js"></script>
+</body></html>
